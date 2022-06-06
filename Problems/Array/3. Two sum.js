@@ -4,19 +4,17 @@
  * @return {number[]}
  */
 var twoSum = function (nums, target) {
-    const elements = {};
-    for (let i = 0; i < nums.length; i++) {
-        elements[nums[i]] = i;
-    }
+    const map = {};
 
     for (let i = 0; i < nums.length; i++) {
         const remainder = target - nums[i];
-        if (typeof elements[remainder] !== undefined && elements[remainder] !== i) {
-            return [elements[remainder], i];
+        if (typeof map[remainder] !== 'undefined') {
+            return [map[remainder], i];
         }
+        map[nums[i]] = i;
     }
     return 'not found';
 };
 
-console.log([2, 7, 11, 15], 9);
-console.log([3, 3], 6);
+console.log(twoSum([2, 7, 11, 15], 9));
+console.log(twoSum([3, 3], 6));
