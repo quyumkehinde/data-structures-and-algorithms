@@ -3,6 +3,8 @@
  * @param {number} target
  * @return {number[]}
  */
+// Time complexity - O(n)
+// Space complexity - O(n)
 var twoSum = function (nums, target) {
     const map = {};
 
