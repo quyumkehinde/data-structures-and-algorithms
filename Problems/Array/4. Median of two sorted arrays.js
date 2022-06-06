@@ -3,6 +3,9 @@
  * @param {number[]} nums2
  * @return {number}
  */
+// Time complexity - O(a + b)
+// Space complexity - O(a + b)
+// where a and b are lenght of num1 and num2, respectively
 var findMedianSortedArrays = function (nums1, nums2) {
     const isOdd = (number) => {
         return number % 2 !== 0;
