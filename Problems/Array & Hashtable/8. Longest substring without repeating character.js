@@ -5,7 +5,7 @@
 var lengthOfLongestSubstring = function (s) {
     let chars = {};
     let longest = 0;
-    let count = 0;
+    let start = 0;
 
     if (s.length === 1) {
         return 1;
@@ -13,18 +13,16 @@ var lengthOfLongestSubstring = function (s) {
 
     for (let i = 0; i < s.length; i++) {
         if (typeof chars[s[i]] === 'number') {
-            longest = Math.max(count, longest);
-            i = chars[s[i]];
-            count = 0;
-            chars = {};
-        } else {
-            count++;
-            chars[s[i]] = i;
-            longest = Math.max(count, longest);
+            if (start <= chars[s[i]]) {
+                start = chars[s[i]] + 1;
+            }
         }
-
+        chars[s[i]] = i;
+        const subStrLength = i - start + 1;
+        longest = Math.max(subStrLength, longest);
     }
     return longest;
 };
 
 console.log(lengthOfLongestSubstring('dedf'))
+console.log(lengthOfLongestSubstring('abeefeba'))

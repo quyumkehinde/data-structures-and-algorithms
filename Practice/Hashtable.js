@@ -18,10 +18,6 @@ class HashTable {
     get(key) {
         return this.data[this._hash(key)];
     }
-
-    keys() {
-        return this.data;
-    }
 }
 
 const myHashTable = new HashTable(50);
