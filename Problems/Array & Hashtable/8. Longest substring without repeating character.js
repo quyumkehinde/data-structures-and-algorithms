@@ -1,28 +1,43 @@
 /**
  * @param {string} s
- * @return {number}
+ * @return {string}
  */
-var lengthOfLongestSubstring = function (s) {
-    let chars = {};
+// https://leetcode.com/problems/longest-palindromic-substring/
+var longestPalindrome = function (s) {
     let longest = 0;
-    let start = 0;
+    let result = "";
 
-    if (s.length === 1) {
-        return 1;
+    const helper = (left, right, str) => {
+        let result = ""
+        while (left >= 0 && right < str.length && str[left] === str[right]) {
+            const length = right - left + 1;
+            result = str.substr(left, length);
+            left--;
+            right++;
+        }
+        return result;
     }
 
     for (let i = 0; i < s.length; i++) {
-        if (typeof chars[s[i]] === 'number') {
-            if (start <= chars[s[i]]) {
-                start = chars[s[i]] + 1;
-            }
+        // Odd Palindrome
+        const helperResultOdd = helper(i, i, s);
+
+        if (helperResultOdd.length > longest) {
+            longest = helperResultOdd.length;
+            result = helperResultOdd;
         }
-        chars[s[i]] = i;
-        const subStrLength = i - start + 1;
-        longest = Math.max(subStrLength, longest);
+
+        // Even Palindrome
+        const helperResultEven = helper(i, i + 1, s);
+
+        if (helperResultEven.length > longest) {
+            longest = helperResultEven.length;
+            result = helperResultEven;
+        }
     }
-    return longest;
+    return result;
 };
 
-console.log(lengthOfLongestSubstring('dedf'))
-console.log(lengthOfLongestSubstring('abeefeba'))
+console.log(lengthOfLongestSubstring('dedf')) // ded
+console.log(lengthOfLongestSubstring('abeefeba')) // efe
+console.log(lengthOfLongestSubstring('babad')) // bab
