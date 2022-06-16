@@ -22,16 +22,9 @@ class LinkedList {
     }
 
     insert(index, value) {
-        if (typeof index !== 'number' || index >= this.length) {
-            return 'Invalid index!';
-        }
-        if (index === 0) {
-            return this.prepend(value);
-        }
-        let prevNode = this.head;
-        for (let i = 0; i < index - 1; i++) {
-            prevNode = prevNode.next;
-        }
+        if (!this._validate(index)) return 'Invalid index';
+        if (index === 0) return this.prepend(value);
+        const prevNode = this.traverseToIndex(index - 1)
         const newNode = new Node(value);
         newNode.next = prevNode.next;
         prevNode.next = newNode;
@@ -39,8 +32,27 @@ class LinkedList {
         return newNode;
     }
 
-    delete(index) {
-        // if (!)
+    remove(index) {
+        if (!this._validate(index)) return 'Invalid index';
+        if (index === 0) {
+            const delNode = this.head
+            this.head = delNode.next;
+            return delNode;
+        }
+        const prevNode = this.traverseToIndex(index - 1);
+        const delNode = prevNode.next;
+        prevNode.next = delNode.next;
+        this.length--;
+        return delNode;
+    }
+
+    traverseToIndex(index) {
+        if (!this._validate(index)) return undefined;
+        let currentNode = this.head;
+        for (let i = 0; i < index; i++) {
+            currentNode = currentNode.next;
+        }
+        return currentNode;
     }
 
     toArray() {
@@ -51,6 +63,13 @@ class LinkedList {
             currentNode = currentNode.next;
         }
         return list;
+    }
+
+    _validate(index) {
+        if (typeof index !== 'number' || index >= this.length) {
+            return false;
+        }
+        return true;
     }
 }
 
@@ -69,4 +88,6 @@ linkedList.append('Hello append')
 console.log(linkedList.toArray())
 console.log('/////////')
 console.log(linkedList.insert(1, 'Inserted at index 1'));
+console.log(linkedList.toArray())
+linkedList.remove(3)
 console.log(linkedList.toArray())
