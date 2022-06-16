@@ -53,10 +53,11 @@ class LinkedList {
         const node = index > Math.floor(this.length / 2)
             ? this.traverseToIndexFromTail(index)
             : this.traverseToIndexFromHead(index);
+        console.log(node)
         node.prev.next = node.next;
         node.next.prev = node.prev;
         this.length--;
-        return delNode;
+        return node;
     }
 
     traverseToIndexFromHead(index) {
@@ -71,7 +72,7 @@ class LinkedList {
     traverseToIndexFromTail(index) {
         if (!this._validate(index)) return undefined;
         let currentNode = this.tail;
-        for (let i = this.length - 1; i > 0; i--) {
+        for (let i = this.length - 1; i > index; i--) {
             currentNode = currentNode.prev;
         }
         return currentNode;
@@ -112,5 +113,6 @@ console.log(linkedList.toArray())
 console.log('/////////')
 console.log(linkedList.insert(1, 'Inserted at index 1'));
 console.log(linkedList.toArray())
+console.log('///////////////////////////////////')
 linkedList.remove(3)
 console.log(linkedList.toArray())
