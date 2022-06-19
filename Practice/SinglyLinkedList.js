@@ -55,6 +55,22 @@ class LinkedList {
         return currentNode;
     }
 
+    reverse() {
+        let head = this.head;
+        const tail = head;
+        let currentNode = head.next;
+        while (currentNode) {
+            const temp = currentNode.next;
+            currentNode.next = head;
+            head = currentNode;
+            currentNode = temp;
+        }
+        tail.next = null;
+        this.tail = tail;
+        this.head = head;
+        return this;
+    }
+
     toArray() {
         let list = [];
         let currentNode = this.head;
@@ -85,9 +101,13 @@ console.log(linkedList.toArray())
 linkedList.prepend('Hello prepend')
 linkedList.prepend('Hello prepend 2')
 linkedList.append('Hello append')
-console.log(linkedList.toArray())
-console.log('/////////')
-console.log(linkedList.insert(1, 'Inserted at index 1'));
+linkedList.toArray()
+linkedList.insert(1, 'Inserted at index 1');
 console.log(linkedList.toArray())
 linkedList.remove(3)
 console.log(linkedList.toArray())
+console.log('///////////////////');
+console.log(linkedList.reverse());
+
+// console.log(linkedList.toArray())
+// console.log(linkedList)

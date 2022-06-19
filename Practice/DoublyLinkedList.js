@@ -78,6 +78,10 @@ class LinkedList {
         return currentNode;
     }
 
+    reverse() {
+
+    }
+
     toArray() {
         let list = [];
         let currentNode = this.head;
@@ -105,7 +109,6 @@ class Node {
 }
 
 const linkedList = new LinkedList('hello');
-console.log(linkedList.toArray())
 linkedList.prepend('Hello prepend')
 linkedList.prepend('Hello prepend 2')
 linkedList.append('Hello append')
