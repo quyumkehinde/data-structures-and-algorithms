@@ -4,7 +4,7 @@
  * @return {boolean}
  */
 // Time complexity - O(n) where n is the length of nums
-// Space complrxity - O(1)
+// Space complexity - O(1)
 var increasingTriplet = function (nums) {
     if (nums.length < 3) return false;
     let first = Infinity, second = Infinity;
