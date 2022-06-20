@@ -35,3 +35,37 @@ var setZeroes = function (matrix) {
 
 // this method makes use of the first row and column to keep track of the zero rows and columns
 
+/**
+ * @param {number[][]} matrix
+ * @return {void} Do not return anything, modify matrix in-place instead.
+ */
+
+// Time complexity - O(m*n)
+// Space complecity - 0(1)
+var setZeroes = function (matrix) {
+    let firstCol = 1;
+    for (let i = 0; i < matrix.length; i++) {
+        for (let j = 0; j < matrix[i].length; j++) {
+            if (matrix[i][j] === 0) {
+                if (i !== 0) {
+                    matrix[i][0] = 0;
+                } else {
+                    firstCol = 0;
+                }
+                matrix[0][j] = 0;
+            }
+        }
+    }
+
+    for (let i = matrix.length - 1; i >= 0; i--) {
+        for (let j = matrix[i].length - 1; j >= 0; j--) {
+            let rowCheck = matrix[i][0];
+            if (i === 0) {
+                rowCheck = firstCol;
+            }
+            if (matrix[0][j] === 0 || rowCheck === 0) {
+                matrix[i][j] = 0;
+            }
+        }
+    }
+};
