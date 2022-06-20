@@ -1,43 +1,40 @@
+// https://leetcode.com/problems/longest-palindromic-substring/
 /**
  * @param {string} s
  * @return {string}
  */
-// https://leetcode.com/problems/longest-palindromic-substring/
+// Time complexity - O(n^2) where n is the length of the string
+// Space complexity - O(1)
 var longestPalindrome = function (s) {
     let longest = 0;
-    let result = "";
-
-    const helper = (left, right, str) => {
-        let result = ""
-        while (left >= 0 && right < str.length && str[left] === str[right]) {
+    let longestStart = 0;
+    for (let i = 0; i < s.length; i++) {
+        let left = i, right = i;
+        while (left >= 0 && right < s.length && s[left] === s[right]) {
             const length = right - left + 1;
-            result = str.substr(left, length);
+            if (length > longest) {
+                longest = length;
+                longestStart = left;
+            }
             left--;
             right++;
         }
-        return result;
-    }
 
-    for (let i = 0; i < s.length; i++) {
-        // Odd Palindrome
-        const helperResultOdd = helper(i, i, s);
-
-        if (helperResultOdd.length > longest) {
-            longest = helperResultOdd.length;
-            result = helperResultOdd;
-        }
-
-        // Even Palindrome
-        const helperResultEven = helper(i, i + 1, s);
-
-        if (helperResultEven.length > longest) {
-            longest = helperResultEven.length;
-            result = helperResultEven;
+        left = i;
+        right = i + 1;
+        while (left >= 0 && right < s.length && s[left] === s[right]) {
+            const length = right - left + 1;
+            if (length > longest) {
+                longest = length;
+                longestStart = left;
+            }
+            left--;
+            right++;
         }
     }
-    return result;
+    return s.substr(longestStart, longest);
 };
 
-console.log(lengthOfLongestSubstring('dedf')) // ded
-console.log(lengthOfLongestSubstring('abeefeba')) // efe
-console.log(lengthOfLongestSubstring('babad')) // bab
+console.log(longestPalindrome('dedf')) // ded
+console.log(longestPalindrome('abeefeba')) // efe
+console.log(longestPalindrome('babad')) // bab
