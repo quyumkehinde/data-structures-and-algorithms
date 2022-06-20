@@ -9,7 +9,7 @@
 // Space complecity - O(n)
 // where n is the length of the string
 var lengthOfLongestSubstring = function (s) {
-    if (s < 2) return s;
+    if (s.length < 2) return s.length;
     const chars = {};
     let max = 0;
     let start = 0;
