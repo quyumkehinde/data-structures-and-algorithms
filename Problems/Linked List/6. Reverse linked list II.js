@@ -16,31 +16,23 @@
 // Space complexity - O(1)
 var reverseBetween = function (head, left, right) {
     if (!head.next) return head;
-
-    let firstTail = null;
-    let index = 0;
-    let secondTail = head;
+    let firstTail = head;
     let current = head;
-    if (left > 1) {
-        firstTail = head;
-        index = 1;
-        while (index < left - 1) {
-            firstTail = firstTail.next;
-            index++;
-        }
-        secondTail = firstTail.next;
-        current = firstTail.next;
+    let i = 1;
+    while (i < left) {
+        firstTail = current;
+        current = current.next;
+        i++;
     }
-
-    let start = null;
-    while (++index <= right) {
+    let start = null, secondTail = current;
+    while (i <= right) {
         const temp = current.next;
         current.next = start;
         start = current;
         current = temp;
+        i++;
     }
-    secondTail.next = current;
-    if (left < 2) return start;
     firstTail.next = start;
-    return head;
+    secondTail.next = current;
+    return left === 1 ? start : head;
 };
