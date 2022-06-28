@@ -96,10 +96,3 @@ console.log(myStack2);
 myStack2.pop();
 console.log(myStack2)
 console.log(myStack2.isEmpty())
-// console.log(myStack.peek());
-// myStack.pop();
-// console.log(myStack);
-// myStack.push(1);
-// myStack.push(2);
-// console.log(myStack);
-// console.log(myStack.isEmpty())
