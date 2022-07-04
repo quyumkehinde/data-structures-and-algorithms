@@ -13,6 +13,9 @@
  */
 
 // Recursive solution
+// Time complexity - O(n)
+// Space complexity - O(n)
+// where n is the number of nodes in the tree
 var inorderTraversal = function (root) {
     let result = [];
     const inorder = (node) => {
@@ -27,3 +30,25 @@ var inorderTraversal = function (root) {
     inorder(root);
     return result;
 };
+
+// Iterative method
+// Time complexity - O(n)
+// Space complexity - O(n)
+// where n is the number of nodes in the tree
+var inorderTraversal = function (root) {
+    let result = [];
+    let stack = [];
+    let curr = root;
+    while (curr || stack.length > 0) {
+        if (!curr) {
+            const node = stack.pop();
+            result.push(node.val);
+            curr = node.right;
+        } else {
+            stack.push(curr);
+            curr = curr.left;
+        }
+    }
+    return result;
+};
+
