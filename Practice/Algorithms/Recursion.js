@@ -40,5 +40,30 @@ function fibonacci2(n) {
     return prev1 + prev2;
 }
 
-console.log(fibonacci(8));
-console.log(fibonacci2(8));
+// console.log(fibonacci(8));
+// console.log(fibonacci2(8));
+
+function reverseString(str) {
+    let newString = '';
+    for (let i = str.length - 1; i >= 0; i--) {
+        newString += str[i];
+    }
+    return newString;
+}
+
+function reverseString2(str) {
+    str = str.split('');
+    let result = '';
+    function reverse(str) {
+        // recursive case - there is at least one element in the str to br reverse
+        if (str.length > 0) {
+            result += str.pop();
+            return reverse(str);
+        }
+        // base case - there are no elements in the str to reverse
+        return result;
+    }
+    return reverse(str);
+}
+
+console.log(reverseString2('hello'))

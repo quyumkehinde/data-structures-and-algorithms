@@ -10,3 +10,4 @@
 2. Each instance of the subproblem is identical in nature.
 3. The solution of each sub problem can be combined to solved the problem at hand.
 
+PS: Anything that can be done with recursion can be done with iteration
