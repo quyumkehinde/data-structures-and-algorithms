@@ -37,3 +37,20 @@ function selectionSort(arr) {
 
 // console.log(selectionSort([23, 3, 49, 18, 01]))
 
+function insertionSort(arr) {
+    if (arr.length < 2) return arr;
+    for (let i = 1; i < arr.length; i++) {
+        let prev = i - 1;
+        let curr = i;
+        while (arr[curr] < arr[prev] && curr !== 0) {
+            let temp = arr[curr]
+            arr[curr] = arr[prev]
+            arr[prev] = temp;
+            curr--;
+            prev--;
+        }
+    }
+    return arr;
+}
+
+console.log(insertionSort([23, 3, 49, 18, 01]))
