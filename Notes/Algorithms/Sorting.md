@@ -26,3 +26,10 @@ Iterate through the elements, switches the element in iteration to the left unti
 - **Space complexity - O(1)**
 
 Iterates through the elements in the array everytime to get and set the minimum value at every index in the array.
+
+## 4. Merge Sort
+
+- **Time complexity - O(nlogn)**
+- **Space complexity - O(n)**
+
+Merge the element using divide and conquer. Breaks the elements recursively and merge by comparin values of the left and right side.
