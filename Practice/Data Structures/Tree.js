@@ -131,6 +131,51 @@ class BinarySearchTree {
         }
         return search();
     }
+
+    depthFirstSearchInOrder() {
+        function search(node) {
+            if (node.left) {
+                search(node.left);
+            }
+            result.push(node.value);
+            if (node.right) {
+                search(node.right);
+            }
+        }
+        let result = [];
+        search(this.root);
+        return result;
+    }
+
+    depthFirstSearchPreOrder() {
+        function search(node) {
+            result.push(node.value);
+            if (node.left) {
+                search(node.left);
+            }
+            if (node.right) {
+                search(node.right);
+            }
+        }
+        let result = [];
+        search(this.root);
+        return result;
+    }
+
+    depthFirstSearchPostOrder() {
+        function search(node) {
+            if (node.left) {
+                search(node.left);
+            }
+            if (node.right) {
+                search(node.right);
+            }
+            result.push(node.value);
+        }
+        let result = [];
+        search(this.root);
+        return result;
+    }
 }
 
 function traverse(node) {
@@ -153,5 +198,8 @@ console.log(tree.insert(1));
 console.log(tree.remove(170));
 console.log(traverse(tree.root))
 
-console.log(tree.breadthFirstSearch());
-console.log(tree.breadthFirstSearchRecursive())
+// console.log(tree.breadthFirstSearch());
+// console.log(tree.breadthFirstSearchRecursive())
+console.log(tree.depthFirstSearchInOrder())
+console.log(tree.depthFirstSearchPreOrder())
+console.log(tree.depthFirstSearchPostOrder())
