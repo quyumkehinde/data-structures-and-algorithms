@@ -18,9 +18,9 @@ function factorial2(num) {
 // console.log(factorial(5))
 // console.log(factorial2(5))
 
-
+// Space complexity - O(2^n)
+// Time complexity - O(n)
 function fibonacci(n) {
-    debugger;
     if (n < 0) return null;
     if (n < 2) {
         return n;
