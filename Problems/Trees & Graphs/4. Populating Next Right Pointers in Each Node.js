@@ -16,9 +16,8 @@
 // Time complexity - O(n)
 // Space complexity - O(n)
 var connect = function (root) {
-    if (!root) return root;
-    let queue = [root];
-    let index = 0;
+    if (!root || !root.left) return root;
+    let queue = [root], index = 0;
     let noOfNodes = 1, nextEdge = 0;
     while (index < queue.length) {
         const node = queue[index];
@@ -29,7 +28,6 @@ var connect = function (root) {
             queue.push(node.right)
         }
         if (index === nextEdge) {
-            node.next = null;
             noOfNodes *= 2;
             nextEdge += noOfNodes;
         } else {
