@@ -37,3 +37,19 @@ var connect = function (root) {
     }
     return root;
 };
+
+// Time complexity - O(n)
+// Space complexity - O(1)
+var connect = function (root) {
+    let current = root;
+    while (current && current.left) {
+        let temp = current.left;
+        while (current) {
+            current.left.next = current.right;
+            current.right.next = current.next ? current.next.left : null;
+            current = current.next;
+        }
+        current = temp;
+    }
+    return root;
+};
