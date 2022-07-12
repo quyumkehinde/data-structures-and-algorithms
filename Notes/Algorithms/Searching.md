@@ -8,6 +8,8 @@ The process to going through a collection of data to find a particular element/n
 2. Binary search
 3. Breadth-first search (BFS)
 4. Depth-first search (DFS)
+5. Dijkstra algorithm
+6. Bellman-Ford algorithm
 
 ### 1. Linear search
 
@@ -35,7 +37,15 @@ BFS is done by checking all the node on the same level first and then moving on 
 - **Time complexity - O(n)**
 - **Space complexity - O(h)** *where h is the maximum height of the tree.*
 
-DFS is done by checking all the
+DFS done by checking all the nodes down a path and the backtracking to other paths when the node we are searching is not found.
+
+### 5. Dijkstra algorithm
+
+Used to find the shorted path to a node in a weighted graph (less time complexity, compared to Bellman's algorithm)
+
+### 6. Bellman-Ford algorithm
+
+Used to find the shorted path to a node in a weighted graph (weight can be a negative value, unlike Dijkstra's algorithm)
 
 ## BFS Vs DFS
 
