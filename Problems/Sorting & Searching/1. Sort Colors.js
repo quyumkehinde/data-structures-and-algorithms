@@ -16,3 +16,27 @@ var sortColors = function (nums) {
         }
     }
 };
+
+// Time complexity - O(n)
+// Space complexity - O(1)
+var sortColors2 = function (nums) {
+    let left = 0, right = nums.length - 1;
+    let i = 0;
+    while (i <= right) {
+        if (nums[i] > 1) {
+            const temp = nums[right];
+            nums[right] = nums[i];
+            nums[i] = temp;
+            right--;
+        } else if (nums[i] < 1) {
+            const temp = nums[left];
+            nums[left] = nums[i];
+            nums[i] = temp;
+            left++;
+            i++;
+        } else {
+            i++;
+        }
+    }
+    return nums;
+};
