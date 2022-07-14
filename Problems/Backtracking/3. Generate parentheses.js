@@ -3,8 +3,8 @@
  * @param {number} n
  * @return {string[]}
  */
-// Space complexity - O(2^n)
-// Time complexity - O(n)
+// Space complexity - O(n)
+// Time complexity - O(2^n)
 var generateParenthesis = function (n) {
     let result = [];
     function generate(value, open, close) {
