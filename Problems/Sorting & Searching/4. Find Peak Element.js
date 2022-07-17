@@ -2,6 +2,8 @@
  * @param {number[]} nums
  * @return {number}
  */
+// Time complexity - O(logn)
+// Space complexity - O(1)
 var findPeakElement = function (nums) {
     let start = 0, end = nums.length - 1, result = null;
     while (start <= end) {
