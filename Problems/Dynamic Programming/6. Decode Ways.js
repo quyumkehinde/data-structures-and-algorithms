@@ -3,7 +3,6 @@
  * @return {number}
  */
 var numDecodings = function (s) {
-    if (s[0] === '0') return 0;
     let decodeMap = {};
     function decode(index) {
         if (decodeMap[index]) return decodeMap[index];
