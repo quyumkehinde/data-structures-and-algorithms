@@ -12,6 +12,8 @@
  * @param {TreeNode} root
  * @return {string}
  */
+// Time complexity - O(n)
+// Space complexity - O(n) // where n is the number of nodes
 var serialize = function (root) {
     let res = '';
     function buildString(node) {
@@ -33,6 +35,8 @@ var serialize = function (root) {
  * @param {string} data
  * @return {TreeNode}
  */
+// Time complexity - O(n)
+// Space complexity - O(n) // where n is the length of data
 var deserialize = function (data) {
     function Node(val) {
         return { val, right: null, left: null };
