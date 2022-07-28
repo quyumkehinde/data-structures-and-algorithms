@@ -15,5 +15,4 @@ var isHappy = function (n) {
         if (num === 1) return true;
         map[num] = true;
     }
-    return false;
 };
