@@ -32,3 +32,24 @@ var mySqrt = function (x) {
     }
     return root(1, Math.floor(x / 2));
 };
+
+/**
+ * @param {number} x
+ * @return {number}
+ */
+var mySqrt = function (x) {
+    if (x < 2) return x;
+    let start = 1, end = Math.floor(x / 2);
+    while (true) {
+        let mid = Math.floor((start + end) / 2);
+        if (mid * mid > x) {
+            end = mid - 1;
+            continue;
+        }
+        if ((mid + 1) * (mid + 1) > x) {
+            return mid;
+        }
+        start = mid + 1;
+    }
+};
+
