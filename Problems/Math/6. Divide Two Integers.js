@@ -16,7 +16,10 @@ var divide = function (dividend, divisor) {
             mul = 1;
         }
     }
+    const pMax = (2 ** 31) - 1, nMax = -(2 ** 31)
     if (divisor < 0) res = -res;
     if (dividend < 0) res = -res;
+    if (res > pMax) return pMax;
+    if (res < nMax) return nMax;
     return res;
 };
