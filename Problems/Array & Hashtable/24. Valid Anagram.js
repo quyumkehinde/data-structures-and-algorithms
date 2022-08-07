@@ -3,6 +3,8 @@
  * @param {string} t
  * @return {boolean}
  */
+// TC - O(s+t)
+// SC - O(s)
 var isAnagram = function (s, t) {
     if (s.length !== t.length) return false;
     let map = {};
@@ -15,4 +17,19 @@ var isAnagram = function (s, t) {
         map[t[i]]--;
     }
     return true;
+};
+
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+// TC - O(nlogn)
+// SC - O(1)
+var isAnagram = function (s, t) {
+    if (s.length !== t.length) return false;
+    if (s.split('').sort().join('') === t.split('').sort().join('')) {
+        return true;
+    }
+    return false;
 };
