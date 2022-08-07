@@ -20,3 +20,26 @@ var integerReplacement = function (n) {
     }
     return getCount(n);
 };
+
+/**
+ * @param {number} n
+ * @return {number}
+ */
+// Time complexity - O(logn)
+// Space complexity - O(1)
+var integerReplacement = function (n) {
+    let count = 0;
+    while (n > 1) {
+        if (n % 2 === 0) {
+            n /= 2;
+        } else {
+            if ((n + 1) % 4 === 0 && n !== 3) {
+                n++;
+            } else {
+                n--;
+            }
+        }
+        count++;
+    }
+    return count;
+};
