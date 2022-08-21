@@ -2,6 +2,8 @@
  * @param {character[][]} board
  * @return {boolean}
  */
+// Time complexity - O(81)
+// Space complexity - O(81)
 var isValidSudoku = function(board) {
     let subCache = new Set();
     for (let i = 0; i < 9; i++) {
