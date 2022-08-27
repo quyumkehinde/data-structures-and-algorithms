@@ -21,3 +21,30 @@ var trap = function(height) {
     }
     return result;
 };
+
+/**
+ * @param {number[]} height
+ * @return {number}
+ */
+var trap = function(height) {
+    
+    let leftMax = 0, rightMax = 0, result = 0;
+    let left = 0, right = height.length - 1;
+    
+    while (left <= right) {
+        let water = 0;
+        if (leftMax < rightMax) {
+            water = leftMax - height[left];
+            leftMax = Math.max(leftMax, height[left]);
+            left++;
+        } else {
+            water = rightMax - height[right];
+            rightMax = Math.max(rightMax, height[right]);
+            right--;
+        }
+        if (water > 0) result += water;
+    }
+    
+    return result;
+};
+
