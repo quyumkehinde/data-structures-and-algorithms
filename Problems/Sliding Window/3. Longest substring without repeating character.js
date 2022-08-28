@@ -29,15 +29,14 @@ var lengthOfLongestSubstring = function (s) {
  */
 
 var lengthOfLongestSubstring = function(s) {
-    let longest = 0, left = -1, charSet = new Map();
+    let longest = 0, left = 0, charSet = new Map();
     for (let i = 0; i < s.length; i++) {
         const prevIndex = charSet.get(s[i])
         if (prevIndex || prevIndex === 0) {
-            left = Math.max(left, prevIndex);
+            left = Math.max(left, prevIndex + 1);
         }
         charSet.set(s[i], i);
-        longest = Math.max(longest, i - left);
+        longest = Math.max(longest, i - left + 1);
     }
     return longest;
 };
-
