@@ -22,3 +22,22 @@ var lengthOfLongestSubstring = function (s) {
     }
     return max;
 };
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+
+var lengthOfLongestSubstring = function(s) {
+    let longest = 0, left = -1, charSet = new Map();
+    for (let i = 0; i < s.length; i++) {
+        const prevIndex = charSet.get(s[i])
+        if (prevIndex || prevIndex === 0) {
+            left = Math.max(left, prevIndex);
+        }
+        charSet.set(s[i], i);
+        longest = Math.max(longest, i - left);
+    }
+    return longest;
+};
+
